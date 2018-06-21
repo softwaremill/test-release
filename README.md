@@ -3,5 +3,5 @@
 SBT dependency:
 
 ```scala
-"com.softwaremill.testrelease" %% "core" % "0.11"
+"com.softwaremill.testrelease" %% "core" % "0.12"
 ```
