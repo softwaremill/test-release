@@ -1,5 +1,6 @@
+import com.softwaremill.UpdateVersionInDocs
 import com.softwaremill.SbtSoftwareMillCommon.commonSmlBuildSettings
-import com.softwaremill.Publish.ossPublishSettings
+import com.softwaremill.Publish.{updateDocs, ossPublishSettings}
 
 lazy val commonSettings = commonSmlBuildSettings ++ ossPublishSettings ++ Seq(
   organization := "com.softwaremill.testrelease"
@@ -18,6 +19,12 @@ lazy val core = (projectMatrix in file("core"))
     name := "core",
     libraryDependencies ++= Seq(
       scalaTest
+    ),
+    updateDocs := UpdateVersionInDocs(
+      sLog.value,
+      organization.value,
+      version.value,
+      List(file("readme.md"))
     )
   )
   .jvmPlatform(scalaVersions = Seq("2.13.10"))
